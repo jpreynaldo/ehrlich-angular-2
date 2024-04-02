@@ -30,11 +30,11 @@ export class AppComponent implements OnInit{
     if (step === 1) {
       const listInd = this.listed.findIndex(x => x.id === id);
       this.examining.push(this.listed[listInd]);
-      this.listed.slice(listInd, 1);
+      this.listed = this.listed.filter(x=> x.id !== this.listed[listInd].id);
     } else {
       const examiningInd = this.examining.findIndex(x => x.id === id);
       this.hooman.push(this.examining[examiningInd]);
-      this.examining.slice(examiningInd, 1);
+      this.examining = this.examining.filter(x=> x.id !== this.examining[examiningInd].id);
     }
     this._cd.detectChanges();
   }
